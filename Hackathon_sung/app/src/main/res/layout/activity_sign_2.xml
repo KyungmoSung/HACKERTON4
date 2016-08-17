@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.hackerton.Main3Activity">
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="알레르기"
+        android:id="@+id/ChBt1"
+        android:layout_marginTop="24dp"
+        android:checked="false"
+        android:layout_below="@+id/Text1"
+        android:layout_toLeftOf="@+id/imageView4" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="싫어하는 음식"
+        android:id="@+id/ChBt3"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/ChBt1"
+        android:layout_alignLeft="@+id/ChBt1"
+        android:layout_alignStart="@+id/ChBt1"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="채식주의자"
+        android:id="@+id/ChBt2"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
+        android:checked="false"
+        android:layout_above="@+id/ChBt3"
+        android:layout_toRightOf="@+id/ChBt3"
+        android:layout_toEndOf="@+id/ChBt3" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="병"
+        android:id="@+id/ChBt4"
+        android:layout_alignBottom="@+id/ChBt3"
+        android:layout_alignLeft="@+id/ChBt2"
+        android:layout_alignStart="@+id/ChBt2"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="가족력"
+        android:id="@+id/ChBt5"
+        android:layout_below="@+id/ChBt3"
+        android:layout_alignLeft="@+id/ChBt3"
+        android:layout_alignStart="@+id/ChBt3"
+        android:layout_marginTop="29dp"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="기타"
+        android:id="@+id/ChBt6"
+        android:layout_alignBottom="@+id/ChBt5"
+        android:layout_alignLeft="@+id/ChBt4"
+        android:layout_alignStart="@+id/ChBt4"
+        android:checked="false" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageView4"
+        android:onClick="mOnClick"
+        android:src="@drawable/next_button"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/ChBt6"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="자신의 해당사항을 체크해주세요."
+        android:id="@+id/Text1"
+        android:layout_marginTop="23dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
