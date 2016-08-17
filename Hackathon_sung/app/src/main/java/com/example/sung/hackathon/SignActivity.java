@@ -55,6 +55,7 @@ public class SignActivity extends Activity {
                 else {
                     Toast.makeText(getApplicationContext(),"회원가입이 완료됐습니다.",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignActivity.this, LoginActivity.class);
+                    dbOpen=false;
                     startActivity(intent);
                 }
             }
