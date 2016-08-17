@@ -5,7 +5,11 @@
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
         <option name="gradleHome" value="$APPLICATION_HOME_DIR$/gradle/gradle-2.10" />
+=======
+        <option name="gradleHome" value="C:\Program Files\Android\Android Studio\gradle\gradle-2.10" />
+>>>>>>> 6fed7ae7b16d18f0e89f548c839d3c55fb02cc59
         <option name="modules">
           <set>
             <option value="$USER_HOME$/Dropbox/Workspace/ADT-Projects/HACKATHON/Hackathon_sung" />
@@ -16,6 +20,12 @@
           <set>
             <option value="$USER_HOME$/Dropbox/Workspace/ADT-Projects/HACKATHON/Hackathon_sung" />
             <option value="$USER_HOME$/Dropbox/Workspace/ADT-Projects/HACKATHON/Hackathon_sung/app" />
+          </set>
+        </option>
+        <option name="myModules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
       </GradleProjectSettings>
