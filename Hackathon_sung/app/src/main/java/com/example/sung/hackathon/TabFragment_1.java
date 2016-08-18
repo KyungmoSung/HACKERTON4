@@ -5,6 +5,7 @@ package com.example.sung.hackathon;
  */
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,7 +15,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -107,16 +110,42 @@ public class TabFragment_1 extends Fragment {
         });
         ImageButton add = (ImageButton)rootView.findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
-            public void onClick(View arg0) { //다른 액티비티를 띄움
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
-                String str_date = df.format(new Date());
-                Intent in = new Intent(getActivity(), ModifyActivity.class);
-                in.putExtra("name", ""); //값을 넘겨줌
-                in.putExtra("cnt", "1");
-                in.putExtra("exp",str_date);
-                in.putExtra("icon", Integer.toString( R.drawable.apple));
-                startActivityForResult(in, 1);
+            public void onClick(View arg0) {
+
+                LayoutInflater dialog = LayoutInflater.from(getActivity());
+                final View dialogLayout = dialog.inflate(R.layout.add_dialog, null);
+                final Dialog addDialog = new Dialog(getActivity());
+
+                addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                addDialog.setContentView(dialogLayout);
+                addDialog.show();
+
+                Button add_direct = (Button)dialogLayout.findViewById(R.id.add_direct_bt);
+                Button add_mall = (Button)dialogLayout.findViewById(R.id.add_mall_bt);
+                add_direct.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent in = new Intent(getActivity(), ModifyActivity.class);
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+                        String str_date = df.format(new Date());
+                        in.putExtra("name", ""); //값을 넘겨줌
+                        in.putExtra("cnt", "1");
+                        in.putExtra("exp",str_date);
+                        in.putExtra("icon", Integer.toString( R.drawable.apple));
+                        startActivityForResult(in, 1);
+                    }
+                });
+                add_mall.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                    Intent in = new Intent(MainActivity.this, ModifyActivity.class);
+//                    startActivity(in);
+                    }
+                });
+
             }
         });
 
