@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="쇼핑몰"
+        android:id="@+id/textView5"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:background="@color/colorPrimary"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:id="@+id/imageView5"
+                android:src="@drawable/ssg"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="이마트 온라인몰"
+                android:layout_marginTop="10dp"
+                android:id="@+id/ssg"
+                android:textSize="15dp"
+                android:layout_weight="0.07"
+                android:layout_marginLeft="5dp" />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:text="불러오기"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/button"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_button"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#88a3a3"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:autoText="false" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:weightSum="1" >
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="70dp"
+                android:id="@+id/Lotte"
+                android:src="@drawable/lotte"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="롯데 온라인몰"
+                android:layout_marginTop="10dp"
+                android:id="@+id/textView8"
+                android:textSize="15dp"
+                android:layout_weight="0.07"
+                android:layout_marginLeft="10dp" />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:text="불러오기"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/button2"
+                android:layout_marginLeft="95dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_button" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#88a3a3"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:autoText="false"
+            android:id="@+id/textView13" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:weightSum="1" >
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:id="@+id/homeplus"
+                android:src="@drawable/homeplus"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="홈플러스 온라인몰"
+                android:layout_marginTop="10dp"
+                android:id="@+id/textView9"
+                android:textSize="15dp"
+                android:layout_marginLeft="5dp" />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:text="불러오기"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/button3"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_button" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#88a3a3"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:autoText="false"
+            android:id="@+id/textView14" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:weightSum="1" >
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="60dp"
+                android:id="@+id/all"
+                android:src="@drawable/all"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="올마트 온라인몰"
+                android:layout_marginTop="10dp"
+                android:id="@+id/textView11"
+                android:textSize="15dp"
+                android:layout_weight="0.07"
+                android:layout_marginLeft="10dp" />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:text="불러오기"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/button4"
+                android:layout_marginLeft="85dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_button" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#88a3a3"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:autoText="false"
+            android:id="@+id/textView15" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -109,6 +109,7 @@ public class TabFragment_1 extends Fragment {
             }
         });
         ImageButton add = (ImageButton)rootView.findViewById(R.id.add);
+       //식자재 추가
         add.setOnClickListener(new View.OnClickListener() {
 
 
@@ -139,10 +140,10 @@ public class TabFragment_1 extends Fragment {
                     }
                 });
                 add_mall.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-//                    Intent in = new Intent(MainActivity.this, ModifyActivity.class);
-//                    startActivity(in);
+                        @Override
+                        public void onClick(View v) {
+                    Intent in = new Intent(getActivity(), ModifyActivity_Mall.class);
+                    startActivity(in);
                     }
                 });
 
