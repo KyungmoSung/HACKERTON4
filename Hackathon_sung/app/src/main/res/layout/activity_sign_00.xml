@@ -3,10 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-
-
-   >
+    >
 
 
     <LinearLayout
@@ -214,10 +211,10 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:text="가입완료"
+        android:text="탈퇴"
         android:textColor="#000000"
         android:background="#FFFFFF"
-        android:id="@+id/sign_ok"
+        android:id="@+id/userout"
         android:layout_marginTop="70dp"
         android:textSize="20dp"
         android:layout_below="@+id/linearLayout5"

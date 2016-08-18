@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sung.hackathon">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-
 
     <application
         android:allowBackup="true"
@@ -27,9 +23,12 @@
             android:name=".SignActivity"></activity>
         <activity
             android:name=".IconActivity"></activity>
+        <activity
+            android:name=".UserOut"></activity>
+        <activity
+            android:name=".ModifyActivity_Mall"></activity>
 
 
-        <receiver android:name=".MyService"></receiver>
     </application>
 
 </manifest>
