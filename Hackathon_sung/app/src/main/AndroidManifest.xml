@@ -18,11 +18,12 @@
         <activity
             android:name=".ModifyActivity"></activity>
         <activity
-            android:name=".MainActivity"></activity>
+            android:name=".MainActivity" android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".SignActivity"></activity>
         <activity
             android:name=".IconActivity"></activity>
+
     </application>
 
 </manifest>

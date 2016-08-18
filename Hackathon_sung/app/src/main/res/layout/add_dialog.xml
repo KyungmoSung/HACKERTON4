@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/imageView3"
+                android:src="@drawable/ic_mall"
+                android:background="#ffffff" />
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="쇼핑몰에서 불러오기"
+                android:id="@+id/add_mall_bt"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff"
+                android:minWidth="200dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/imageView2"
+                android:src="@drawable/ic_direct"
+                android:background="#ffffff" />
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="사용자가 직접 등록"
+                android:id="@+id/add_direct_bt"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff"
+                android:minWidth="200dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

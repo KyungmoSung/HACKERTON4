@@ -9,7 +9,7 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -18,7 +18,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:textAlignment="center"
-        android:layout_alignParentEnd="false" />
+        android:layout_centerInParent="true" />
 
     <LinearLayout
 
@@ -27,7 +27,7 @@
         android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:background="#FB6433"
+        android:background="@color/colorPrimary"
         android:baselineAligned="false"
         android:weightSum="1">
 
@@ -57,5 +57,19 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/tab_layout"/>
+
+    <TextView
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:text="냉장고를 부탁해"
+        android:id="@+id/textView12"
+        android:layout_above="@+id/serch_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:textSize="17dp"
+        android:textAlignment="center"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="#ffffff"
+        android:background="@color/colorPrimary" />
 
 </RelativeLayout>

@@ -26,7 +26,7 @@ public class DBAdapter {
     static final int DB_VERSION = 1;
     //////////////////////////////////////////////////////////////////
     static final String CREATE = "create table if not exists member (id text primary key not null,password text not null,name text,phone text,address text );"; //회원 테이블
-    static final String CREATE3 = "create table if not exists refrigerator (id text REFERENCES member (id) not null, m_name text primary key not null,number integer,life date );"; //냉장고 테이블
+    static final String CREATE3 = "create table if not exists refrigerator (id text REFERENCES member (id) not null, m_name text primary key not null,number integer,life date,icon integer);"; //냉장고 테이블
     static final String CREATE2 = "create table if not exists r_contents (r_num references recipe(r_num),contents text,image text,sequence integer);"; //재료 테이블
     static final String CREATE6 = "create table if not exists r_material (r_num references recipe(r_num) ,m_name text );"; //레시피의 해시태그 테이블
     static final String CREATE5 = "create table if not exists r_hash (r_num references recipe(r_num) ,hash text primary key);"; //레시피의재료 테이블
@@ -39,6 +39,8 @@ public class DBAdapter {
     public DBAdapter(Context ctx) {
         context = ctx;
     }
+
+
 
 
     private static class OpenHelper extends SQLiteOpenHelper {
@@ -85,7 +87,10 @@ public class DBAdapter {
         return db.query(TABLE, null, null, null, null, null, null);
     }
     //
-
+    public Cursor fetchAllRefrigerator(String cashID) {
+        String query="select * from refrigerator where id="+cashID+";";
+        return db.rawQuery("select * from refrigerator where id='"+cashID+"'",null);
+    }
     public long addMember(String id,String password,String name,String phone,String address) {
         ContentValues values = new ContentValues();
         values.put("id", id);
@@ -96,18 +101,18 @@ public class DBAdapter {
         long l = db.insert("member", null, values);
         return l; //실패시 -1반환
     }
-    public long addRefrigerator(String id,String m_name,int number,String life) {
+    public long addRefrigerator(String id,String m_name,int number,String life,int icon) {
         ContentValues values = new ContentValues();
         values.put("id", id);
         values.put("m_name",m_name);
         values.put("number", number);
         values.put("life", life);
-
+        values.put("icon",icon);
         long l = db.insert("refrigerator", null, values);
         return l;
     }
     public void delRefrigerator(String id,String m_name) { //재료삭제
-        String  str="delete frome refrigerator where id="+id+"AND m_name ="+m_name;
+        String  str="delete from refrigerator where id='"+id+"'AND m_name ='"+m_name+"';";
         db.execSQL(str);
     }
     public void modifyRefrigerator(String id,String m_name,int number,String life) {

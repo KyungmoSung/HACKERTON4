@@ -1,5 +1,7 @@
 package com.example.sung.hackathon;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,18 +14,41 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import android.view.LayoutInflater;
+import android.graphics.Color;
+import android.os.Build;
+import android.app.Dialog;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     TabLayout tabLayout;
-    @Override
+    Intent intent;
+    SharedPreferences pref;
+    private String cashID;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        intent=getIntent();
 
-
+        setCashID(intent.getStringExtra("cashID"));
+        pref = getSharedPreferences("PreFer", 0);
+        //pref에 불려진 자료를 수정할 수 있게 불러옴
+        SharedPreferences.Editor editor = pref.edit();
+        //값 수정
+        editor.putString("ID", cashID);
+        //저장
+        editor.commit();
+        //Toast.makeText(this,cashID,Toast.LENGTH_SHORT).show();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -92,7 +117,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.add_food) {
+
+            LayoutInflater dialog = LayoutInflater.from(this);
+            final View dialogLayout = dialog.inflate(R.layout.add_dialog, null);
+            final Dialog addDialog = new Dialog(this);
+
+            addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            addDialog.setContentView(dialogLayout);
+            addDialog.show();
+
+            Button add_direct = (Button)dialogLayout.findViewById(R.id.add_direct_bt);
+            Button add_mall = (Button)dialogLayout.findViewById(R.id.add_mall_bt);
+            add_direct.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent in = new Intent(MainActivity.this, ModifyActivity.class);
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+                    String str_date = df.format(new Date());
+                    in.putExtra("name", ""); //값을 넘겨줌
+                    in.putExtra("cnt", "1");
+                    in.putExtra("exp",str_date);
+                    in.putExtra("icon", Integer.toString( R.drawable.apple));
+                    startActivity(in);
+                }
+            });
+            add_mall.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Intent in = new Intent(MainActivity.this, ModifyActivity.class);
+//                    startActivity(in);
+                }
+            });
             return true;
         }
 
@@ -122,5 +178,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public String getCashID()
+    {
+        return cashID;
+    }
+    public void setCashID(String s)
+    {
+        cashID=s;
+    }
+    public  SharedPreferences getPrefer()
+    {
+        return pref;
     }
 }

@@ -5,14 +5,9 @@
     android:background="#ffffff"
     android:weightSum="1">
 
-    <TextView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="\n레시피"
-        android:id="@+id/textView11"
-        android:textSize="100dp"
-        android:textIsSelectable="false"
-        android:textAlignment="center"
-        android:layout_weight="0.49" />
+        android:id="@+id/recipe_listview"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
