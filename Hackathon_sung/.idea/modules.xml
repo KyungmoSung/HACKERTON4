@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$/Dropbox/Workspace/ADT-Projects/HACKATHON/Hackathon_sung/Hackathon_sung.iml" filepath="$USER_HOME$/Dropbox/Workspace/ADT-Projects/HACKATHON/Hackathon_sung/Hackathon_sung.iml" />
-      <module fileurl="file://$USER_HOME$/Dropbox/Workspace/ADT-Projects/HACKATHON/Hackathon_sung/app/app.iml" filepath="$USER_HOME$/Dropbox/Workspace/ADT-Projects/HACKATHON/Hackathon_sung/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hackathon_sung.iml" filepath="$PROJECT_DIR$/Hackathon_sung.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>

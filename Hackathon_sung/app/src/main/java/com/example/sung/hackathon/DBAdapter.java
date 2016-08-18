@@ -30,7 +30,7 @@ public class DBAdapter {
     static final String CREATE2 = "create table if not exists r_contents (r_num references recipe(r_num),contents text,image text,sequence integer);"; //재료 테이블
     static final String CREATE6 = "create table if not exists r_material (r_num references recipe(r_num) ,m_name text );"; //레시피의 해시태그 테이블
     static final String CREATE5 = "create table if not exists r_hash (r_num references recipe(r_num) ,hash text primary key);"; //레시피의재료 테이블
-    static final String CREATE4 = "create table if not exists recipe (r_num integer primary key autoincrement,id text references member(id) not null);"; ///레시피 테이블
+    static final String CREATE4 = "create table if not exists recipe (r_num integer primary key autoincrement,id text references member(id) not null,contents text,img integer);"; ///레시피 테이블
     static final String CREATE7 = "create table if not exists freezer (id text REFERENCES member (id) not null, m_name text primary key not null,number integer,life date,icon integer);";
 
     ///////////////////////////////////////////////////////////////////
