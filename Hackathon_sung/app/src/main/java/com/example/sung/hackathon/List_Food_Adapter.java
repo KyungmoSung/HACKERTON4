@@ -4,6 +4,7 @@ package com.example.sung.hackathon;
  * Created by Sung on 2016-06-01.
  */
 import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 
 public class List_Food_Adapter extends ArrayAdapter implements View.OnClickListener  {
     // 버튼 클릭 이벤트를 위한 Listener 인터페이스 정의.
+    Cursor currentCursor;
+    TabFragment_1 t;
     public interface ListBtnClickListener {
         void onListBtnClick(int position) ;
     }
@@ -38,6 +41,9 @@ public class List_Food_Adapter extends ArrayAdapter implements View.OnClickListe
     // 새롭게 만든 Layout을 위한 View를 생성하는 코드
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        t=new TabFragment_1();
+
+
         final int pos = position ;
         final Context context = parent.getContext();
 

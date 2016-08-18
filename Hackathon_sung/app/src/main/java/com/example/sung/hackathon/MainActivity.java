@@ -1,5 +1,7 @@
 package com.example.sung.hackathon;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,18 +14,30 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     TabLayout tabLayout;
-    @Override
+    Intent intent;
+    SharedPreferences pref;
+    private String cashID;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        intent=getIntent();
 
-
+        setCashID(intent.getStringExtra("cashID"));
+        pref = getSharedPreferences("PreFer", 0);
+        //pref에 불려진 자료를 수정할 수 있게 불러옴
+        SharedPreferences.Editor editor = pref.edit();
+        //값 수정
+        editor.putString("ID", cashID);
+        //저장
+        editor.commit();
+        //Toast.makeText(this,cashID,Toast.LENGTH_SHORT).show();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -122,5 +136,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public String getCashID()
+    {
+        return cashID;
+    }
+    public void setCashID(String s)
+    {
+        cashID=s;
+    }
+    public  SharedPreferences getPrefer()
+    {
+        return pref;
     }
 }
