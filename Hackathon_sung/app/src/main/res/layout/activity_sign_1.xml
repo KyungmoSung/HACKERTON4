@@ -98,7 +98,7 @@
             android:padding="20dp"
             android:textSize="18dp"
             android:id="@+id/password"
-            android:hint="영문,숫자 포함"
+            android:hint="영문,숫자 6자이상"
             android:inputType="textPassword"
 
             />

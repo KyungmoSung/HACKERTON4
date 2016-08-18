@@ -39,13 +39,13 @@ public class TabFragment_1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab_fragment_food, container, false);
-        MainActivity m = new MainActivity();
+
         db = new DBAdapter(getContext());
         db.open();
         dbOpen = true;
         xx=getContext().getSharedPreferences("PreFer",0);
         cashID=xx.getString("ID","");
-        Toast.makeText(getContext(),cashID,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(),cashID,Toast.LENGTH_SHORT).show();
 
 
         currentcursor=db.fetchAllRefrigerator(cashID);
@@ -61,34 +61,7 @@ public class TabFragment_1 extends Fragment {
 
 
 
-        /*
-        food = new Item_Food("사과", 4, "2016-12-12", R.drawable.apple);
-        datalist.add(food);
-        food = new Item_Food("바나나", 1, "2016-12-12", R.drawable.banana);
-        datalist.add(food);
-        food = new Item_Food("체리", 10, "2016-12-12", R.drawable.cherry);
-        datalist.add(food);
-        food = new Item_Food("수박", 2, "2016-12-12", R.drawable.watermelon);
-        datalist.add(food);
-        food = new Item_Food("우유", 4, "2016-12-12", R.drawable.milk_carton);
-        datalist.add(food);
-        food = new Item_Food("당근", 3, "2016-12-12", R.drawable.carrot);
-        datalist.add(food);
-        food = new Item_Food("베이컨", 5, "2016-12-12", R.drawable.bacon);
-        datalist.add(food);
-        food = new Item_Food("포도", 1, "2016-12-12", R.drawable.grapes_green);
-        datalist.add(food);
-        food = new Item_Food("체리", 1, "2016-12-12", R.drawable.cherry);
-        datalist.add(food);
-        food = new Item_Food("옥수수", 2, "2016-12-12", R.drawable.corn_cob);
-        datalist.add(food);
-        food = new Item_Food("레몬", 2, "2016-12-12", R.drawable.lemon);
-        datalist.add(food);
-        food = new Item_Food("호박", 2, "2016-12-12", R.drawable.pumpkin);
-        datalist.add(food);
-        food = new Item_Food("딸기", 2, "2016-12-12", R.drawable.strawberry);
-        datalist.add(food);
-    */
+
         GridView listview;
         adapter = new List_Food_Adapter(getActivity(), R.layout.item_list, datalist);
         listview = (GridView) rootView.findViewById(R.id.listView);
@@ -181,7 +154,9 @@ public class TabFragment_1 extends Fragment {
         if (requestCode == 2) { //기존정보 수정
             if (resultCode == RESULT_OK) {
                 Item_Food s = new Item_Food(data.getExtras().getString("Edit_name"), Integer.parseInt(data.getExtras().getString("Edit_cnt")), data.getExtras().getString("Edit_exp"), Integer.parseInt(data.getExtras().getString("Edit_icon")));
+                String m_name = datalist.get(index).getName();
 
+                db.modifyRefrigerator(cashID,m_name,data.getExtras().getString("Edit_name"),Integer.parseInt(data.getExtras().getString("Edit_cnt")), data.getExtras().getString("Edit_exp"), Integer.parseInt(data.getExtras().getString("Edit_icon")));
                 datalist.set(index, s); //index위치의 정보 수정
                 adapter.notifyDataSetChanged();
             }

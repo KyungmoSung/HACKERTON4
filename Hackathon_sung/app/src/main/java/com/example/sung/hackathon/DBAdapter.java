@@ -16,7 +16,7 @@ public class DBAdapter {
     static final String TABLE4 = "r_material";
     static final String TABLE5 = "r_hash";
     static final String TABLE6 = "recipe";
-
+    static final String TABLE7 = "freezer";
     // table field name
     public static final String DBTBL_ID    = "_id";	// long
     public static final String DBTBL_NAME  = "name";	// text
@@ -31,6 +31,8 @@ public class DBAdapter {
     static final String CREATE6 = "create table if not exists r_material (r_num references recipe(r_num) ,m_name text );"; //레시피의 해시태그 테이블
     static final String CREATE5 = "create table if not exists r_hash (r_num references recipe(r_num) ,hash text primary key);"; //레시피의재료 테이블
     static final String CREATE4 = "create table if not exists recipe (r_num integer primary key autoincrement,id text references member(id) not null);"; ///레시피 테이블
+    static final String CREATE7 = "create table if not exists freezer (id text REFERENCES member (id) not null, m_name text primary key not null,number integer,life date,icon integer);";
+
     ///////////////////////////////////////////////////////////////////
     static final String DROP = "drop table ";
     private SQLiteDatabase db;
@@ -55,6 +57,7 @@ public class DBAdapter {
             db.execSQL(CREATE4);
             db.execSQL(CREATE5);
             db.execSQL(CREATE6);
+            db.execSQL(CREATE7);
         }
 
         public void onUpgrade(SQLiteDatabase db, int oldversion, int newversion) {
@@ -64,6 +67,7 @@ public class DBAdapter {
             db.execSQL(DROP + TABLE4);
             db.execSQL(DROP + TABLE5);
             db.execSQL(DROP + TABLE6);
+            db.execSQL(DROP + TABLE7);
             db.execSQL(CREATE);
             db.execSQL(CREATE2);
             db.execSQL(CREATE3);
@@ -71,6 +75,7 @@ public class DBAdapter {
             db.execSQL(CREATE5);
             db.execSQL(CREATE6);
             db.execSQL(CREATE);
+            db.execSQL(CREATE7);
         }
     }
 
@@ -90,6 +95,10 @@ public class DBAdapter {
     public Cursor fetchAllRefrigerator(String cashID) {
         String query="select * from refrigerator where id="+cashID+";";
         return db.rawQuery("select * from refrigerator where id='"+cashID+"'",null);
+    }
+    public Cursor fetchAllfreezer(String cashID) {
+        String query="select * from freezer where id="+cashID+";";
+        return db.rawQuery("select * from freezer where id='"+cashID+"'",null);
     }
     public long addMember(String id,String password,String name,String phone,String address) {
         ContentValues values = new ContentValues();
@@ -115,13 +124,37 @@ public class DBAdapter {
         String  str="delete from refrigerator where id='"+id+"'AND m_name ='"+m_name+"';";
         db.execSQL(str);
     }
-    public void modifyRefrigerator(String id,String m_name,int number,String life) {
+    public void modifyRefrigerator(String id,String m_name,String new_name,int number,String life,int icon) {
+        ContentValues values = new ContentValues();
+        values.put("id", id);
+        values.put("m_name",new_name);
+        values.put("number",number);
+        values.put("life",life);
+        values.put("icon",icon);
+        db.update("refrigerator", values, "id='" + id + "'AND m_name = '"+m_name+"'", null);
+    }
+    public long addfreezer(String id,String m_name,int number,String life,int icon) {
         ContentValues values = new ContentValues();
         values.put("id", id);
         values.put("m_name",m_name);
+        values.put("number", number);
+        values.put("life", life);
+        values.put("icon",icon);
+        long l = db.insert("freezer", null, values);
+        return l;
+    }
+    public void defreezer(String id,String m_name) { //재료삭제
+        String  str="delete from freezer where id='"+id+"'AND m_name ='"+m_name+"';";
+        db.execSQL(str);
+    }
+    public void modifyfreezer(String id,String m_name,String new_name,int number,String life,int icon) {
+        ContentValues values = new ContentValues();
+        values.put("id", id);
+        values.put("m_name",new_name);
         values.put("number",number);
         values.put("life",life);
-        db.update("refrigerator", values, "id='" + id + "'AND m_name = "+m_name+"", null);
+        values.put("icon",icon);
+        db.update("freezer", values, "id='" + id + "'AND m_name = '"+m_name+"'", null);
     }
 
     public String login(String _id,String _password) //로그인 성공시 id반환 실패시 false 반환
@@ -144,7 +177,25 @@ public class DBAdapter {
         return "false";
     }
 
+    public int idcheck(String _id) //로그인 성공시 id반환 실패시 false 반환
+    {
+        String id;
+        Cursor cursor = db.rawQuery("select * from member ",null);
+        int count =cursor.getCount();
+        cursor.moveToFirst();
+        for(int i=0;i<count;i++)
+        {
+            id=cursor.getString(cursor.getColumnIndex("id"));
 
+            if(_id.equals(id))
+            {
+                return 0;
+            }
+            cursor.moveToNext();
+        }
+
+        return 1;
+    }
     /*
     //
     public void delData(String id) {

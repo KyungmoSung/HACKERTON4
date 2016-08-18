@@ -7,6 +7,8 @@ package com.example.sung.hackathon;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -28,18 +30,35 @@ public class TabFragment_2 extends Fragment {
     private static final int RESULT_OK = -1;
     private static final int RESULT_CANCELED = 0;
     int index;
-
+    DBAdapter db;
+    boolean dbOpen;
+    String cashID;
+    Cursor currentcursor;
+    SharedPreferences xx;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab_fragment_food, container, false);
+        db = new DBAdapter(getContext());
+        db.open();
+        dbOpen = true;
+        xx=getContext().getSharedPreferences("PreFer",0);
+        cashID=xx.getString("ID","");
 
-        Item_Food food;
-        food = new Item_Food("고등어", 4, "2016-12-12", R.drawable.fish);
-        datalist.add(food);
-        food = new Item_Food("아이스크림", 4, "2016-12-12", R.drawable.ice_cream_double_cone);
-        datalist.add(food);
-        food = new Item_Food("고기", 4, "2016-12-12", R.drawable.steak_raw);
-        datalist.add(food);
+        currentcursor=db.fetchAllfreezer(cashID);
+        int cnt=currentcursor.getCount();
+        currentcursor.moveToFirst();
+        for(int i=0;i<cnt;i++)
+        {
+            Item_Food food;
+            food=new Item_Food(currentcursor.getString(1),currentcursor.getInt(2),currentcursor.getString(3),currentcursor.getInt(4));
+            datalist.add(food);
+            currentcursor.moveToNext();
+        }
+
+
+
+
+
 
         GridView listview;
         adapter = new List_Food_Adapter(getActivity(), R.layout.item_list, datalist);
@@ -56,7 +75,10 @@ public class TabFragment_2 extends Fragment {
                         .setPositiveButton("삭제", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                String m_name;
+                                m_name=datalist.get(position).getName();
                                 datalist.remove(position); //정보삭제
+                                db.defreezer(cashID,m_name);
                                 adapter.notifyDataSetChanged();
                             }
                         })
@@ -115,7 +137,7 @@ public class TabFragment_2 extends Fragment {
         if (requestCode == 1) { //새로운정보 추가
             if (resultCode == RESULT_OK) {
                 Item_Food s = new Item_Food(data.getExtras().getString("Edit_name"), Integer.parseInt(data.getExtras().getString("Edit_cnt")), data.getExtras().getString("Edit_exp"), Integer.parseInt(data.getExtras().getString("Edit_icon")));
-
+                db.addfreezer(cashID,data.getExtras().getString("Edit_name"),Integer.parseInt(data.getExtras().getString("Edit_cnt")),data.getExtras().getString("Edit_exp"), Integer.parseInt(data.getExtras().getString("Edit_icon")));
                 datalist.add(s);
                 adapter.notifyDataSetChanged();
             }
@@ -124,7 +146,9 @@ public class TabFragment_2 extends Fragment {
             if (resultCode == RESULT_OK) {
                 Item_Food s = new Item_Food(data.getExtras().getString("Edit_name"), Integer.parseInt(data.getExtras().getString("Edit_cnt")), data.getExtras().getString("Edit_exp"), Integer.parseInt(data.getExtras().getString("Edit_icon")));
 
-                datalist.set(index, s); //index위치의 정보 수정
+                String m_name = datalist.get(index).getName();
+                db.modifyfreezer(cashID,m_name,data.getExtras().getString("Edit_name"),Integer.parseInt(data.getExtras().getString("Edit_cnt")), data.getExtras().getString("Edit_exp"), Integer.parseInt(data.getExtras().getString("Edit_icon")));
+                datalist.set(index, s);
                 adapter.notifyDataSetChanged();
             }
         }
