@@ -1,6 +1,3 @@
-import com.sun.net.ssl.HttpsURLConnection;
-import sun.net.www.URLConnection;
-
 import java.io.*;
 import java.net.URL;
 
@@ -18,11 +15,27 @@ public class Main {
             String id = "mw9027";
             String pw = "jy2411     ";
             String param = "id="+id+"&pw="+pw;
-            URL targetURL = new URL("http://www.google.com");
+            URL targetURL = new URL("http://pay.ssg.com/myssg/orderList.ssg");
 
-            System.out.println("test");
+            BufferedReader bf;
+            String line;
+
+            bf = new BufferedReader(new InputStreamReader(targetURL.openStream(),"UTF-8"));
+
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("sourceCopy.html"),"UTF-8"));
+            while((line=bf.readLine())!=null){
+                System.out.println(line);
+                bw.write(line);
+                bw.write("\r\n");
+            }
+            bw.close();
+
+            CloseableHttpClient client = HttpClients.createDefault();
+
 
             //targetURL = new URL("http://pay.ssg.com/myssg/orderList.ssg?searchDtType=3&searchStartDt=2016-05-19&searchEndDt=2016-08-17&searchTypeCd=&searchKeyword=&searchDeliveryType=&shppTypeDtlCd=&page=1");
+
+            /*
             URLConnection urlConn = targetURL.openConnection();
             HttpsURLConnection request = (HttpsURLConnection) urlConn;
 
@@ -53,6 +66,7 @@ public class Main {
             StringBuffer sb = new StringBuffer();
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("sourceCopy.html"),"euc-kr"));
 
+
             while ((buffer = in.readLine()) != null) {
                 sb.append(buffer);
                 bw.write(buffer);
@@ -61,7 +75,7 @@ public class Main {
             }
             bw.close();
             in.close();
-
+            */
 
 
         }catch(Exception e){
