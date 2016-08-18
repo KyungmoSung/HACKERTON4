@@ -109,51 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.add_food) {
-
-            LayoutInflater dialog = LayoutInflater.from(this);
-            final View dialogLayout = dialog.inflate(R.layout.add_dialog, null);
-            final Dialog addDialog = new Dialog(this);
-
-            addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            addDialog.setContentView(dialogLayout);
-            addDialog.show();
-
-            Button add_direct = (Button)dialogLayout.findViewById(R.id.add_direct_bt);
-            Button add_mall = (Button)dialogLayout.findViewById(R.id.add_mall_bt);
-            add_direct.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent in = new Intent(MainActivity.this, ModifyActivity.class);
-                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
-                    String str_date = df.format(new Date());
-                    in.putExtra("name", ""); //값을 넘겨줌
-                    in.putExtra("cnt", "1");
-                    in.putExtra("exp",str_date);
-                    in.putExtra("icon", Integer.toString( R.drawable.apple));
-                    startActivity(in);
-                }
-            });
-            add_mall.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    Intent in = new Intent(MainActivity.this, ModifyActivity.class);
-//                    startActivity(in);
-                }
-            });
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

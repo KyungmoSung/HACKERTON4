@@ -102,6 +102,13 @@ public class SignActivity extends Activity {
 
                 }}
         });
+        Button bt_cancle = (Button)findViewById(R.id.cancel);
+        bt_cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 }
