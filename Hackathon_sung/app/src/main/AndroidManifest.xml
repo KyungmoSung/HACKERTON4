@@ -27,6 +27,10 @@
             android:name=".UserOut"></activity>
         <activity
             android:name=".ModifyActivity_Mall"></activity>
+        <activity
+            android:name=".recipe_add"></activity>
+
+
 
 
     </application>

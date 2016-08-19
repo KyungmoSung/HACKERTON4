@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:textAlignment="center">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,45 +50,62 @@
         android:layout_toEndOf="@+id/recipe_img"
         android:layout_marginStart="61dp" />
 
-    <TableLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/recipe_img"
-        android:layout_alignStart="@+id/recipe_img"
-        android:layout_marginTop="27dp"
-        android:id="@+id/tableLayout">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recipe_img">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="181dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="주재료"
+                    android:id="@+id/textView17"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:focusable="false"
+                    android:layout_alignTop="@+id/tableLayout"
+                    android:layout_toEndOf="@+id/imageButton"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="기타재료 "
+                    android:id="@+id/textView18"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="148dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="주재료"
-                android:id="@+id/textView17"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_marginLeft="30dp"
-                android:focusable="false"
-                android:layout_alignTop="@+id/tableLayout"
-                android:layout_toEndOf="@+id/imageButton" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="기타재료 "
-                android:id="@+id/textView18"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:layout_marginLeft="120dp" />
-
-        </LinearLayout>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="200dp">
 
             <TextView
                 android:text="레시피"
@@ -96,11 +113,12 @@
                 android:layout_column="1"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="30dp" />
-        </TableRow>
-
-    </TableLayout>
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
 
 
 </RelativeLayout>

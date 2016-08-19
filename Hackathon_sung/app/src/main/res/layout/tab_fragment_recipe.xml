@@ -7,7 +7,19 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="520dp"
         android:id="@+id/recipe_listview"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.40" />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/recipe_bt"
+        android:background="@color/colorPrimary"
+        android:maxHeight="15dp"
+        android:src="@drawable/add"
+        android:onClick="onClicked" />
+
+
 </LinearLayout>
