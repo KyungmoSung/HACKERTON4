@@ -14,13 +14,16 @@ public class Main_HtmlUnit {
 
 
     public static Map<String, String> cookies;
+
+    static ArrayList<String> food_list = new ArrayList<String>();
+
     public static void main(String arvs[]){
 
         ServerSocket ss = null;
         Socket client;
-        OutputStream out;
+
+        BufferedWriter networkWriter;
         DataOutputStream dos ;
-        InputStream in ;
         DataInputStream dis ;
 
 
@@ -32,19 +35,27 @@ public class Main_HtmlUnit {
         String id = "mw9027";
         String pw = "jy2411";
 
+        food_list.add("오이");
+        food_list.add("굴비");
+        food_list.add("고등어");
+        food_list.add("고등어");
+        food_list.add("콩나물");
         while(true) {
             try {
                 ss = new ServerSocket(9010);
-                System.out.println("waiting");
+                System.out.println("waiting2");
                 client = ss.accept();
+                ss.close();
                 System.out.println("accept");
 
-                in = client.getInputStream();
-                dis = new DataInputStream(in);
 
-                System.out.println(dis.readUTF());
+                networkWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+                PrintWriter out = new PrintWriter(networkWriter, true);
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(client.getInputStream()));
+                String str = in.readLine();
 
-
+                System.out.println(str);
 
                 webClient = new WebClient(BrowserVersion.FIREFOX_38);
 
@@ -81,18 +92,24 @@ public class Main_HtmlUnit {
 
 
                 }
+                StringBuilder sb = new StringBuilder("");
                 for (String s : food) {
+                    for(String st : food_list){
+                        if(s.contains(st)) {
+                            sb.append(st);
+                            sb.append(" ");
+                            break;
+                        }
+
+                    }
 
                     System.out.println(s);
                 }
+                System.out.println("result: "+sb);
                 bw.write(currPage.toString());
                 bw.close();
+                out.println(sb);
 
-                out = client.getOutputStream();
-                dos = new DataOutputStream(out);
-                dos.writeUTF("서버로부터의 메세지입니다.");
-
-                dos.close();
                 client.close();
             /*
             cookies = new HashMap<String, String>();

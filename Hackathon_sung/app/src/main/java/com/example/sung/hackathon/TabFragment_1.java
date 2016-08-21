@@ -29,8 +29,8 @@ import java.util.Locale;
 
 public class TabFragment_1 extends Fragment {
 
-    List_Food_Adapter adapter;
-    final ArrayList<Item_Food> datalist = new ArrayList<>();
+    public static List_Food_Adapter adapter;
+    public static final ArrayList<Item_Food> datalist = new ArrayList<>();
     private static final int RESULT_OK = -1;
     private static final int RESULT_CANCELED = 0;
     int index;

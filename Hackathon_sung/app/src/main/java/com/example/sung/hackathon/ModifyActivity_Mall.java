@@ -96,8 +96,6 @@ public class ModifyActivity_Mall extends Activity {
                             case R.id.button1:
                                 mall[0].setId(((EditText)dialogLayout.findViewById(R.id.input_id)).getText().toString());
                                 mall[0].setPw(((EditText)dialogLayout.findViewById(R.id.input_pw)).getText().toString());
-                                Log.d("park", "onClick: ");
-                                Toast.makeText(v.getContext(),"test",Toast.LENGTH_LONG).show();
                                 break;
                             case R.id.button2:
                                 break;
@@ -136,6 +134,14 @@ class ProcessCrollingTask extends AsyncTask<Void, Void, Void> {
     private static BufferedReader networkReader;
     private static BufferedWriter networkWriter;
     private static BufferedReader in;
+
+    @Override
+    protected void onProgressUpdate(Void... values) {
+        super.onProgressUpdate(values);
+        TabFragment_1.adapter.notifyDataSetChanged();
+
+    }
+
     @Override
     protected Void doInBackground(Void... params) {
         try{
@@ -144,12 +150,23 @@ class ProcessCrollingTask extends AsyncTask<Void, Void, Void> {
             networkWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             networkReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(networkWriter, true);
-
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String str = in.readLine();
-            Log.d("park", "doInBackground: "+str);
-
             out.println("test");
+            in = new BufferedReader(
+                    new InputStreamReader(socket.getInputStream()));
+            String str = in.readLine();
+
+
+            for(String st : str.split(" ")) {
+
+                //DBAdapter.addRefrigerator(MainActivity.session,st, 1, "2016-12-12", R.drawable.apple);
+                TabFragment_1.datalist.add(new Item_Food(st,1,"2016-12-12",R.drawable.apple));
+            }
+
+
+            //Toast.makeText(params[0].get,"success",Toast.LENGTH_LONG).show();
+
+            publishProgress();
+            Log.d("park", "doInBackground: end"+str);
         }catch(Exception e){
             Log.d("park",e.toString());
             Log.d("park", "socket error");
