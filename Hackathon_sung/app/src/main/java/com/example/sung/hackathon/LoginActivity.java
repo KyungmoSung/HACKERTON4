@@ -2,6 +2,7 @@ package com.example.sung.hackathon;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 public class LoginActivity extends Activity {
     DBAdapter db;
     boolean dbOpen;
-
+    SharedPreferences pref;
     EditText id,password;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,14 @@ public class LoginActivity extends Activity {
         dbOpen = true;
         Button login_bt = (Button)findViewById(R.id.login);
         Button sign_bt = (Button)findViewById(R.id.sign);
+        pref=getSharedPreferences("PreFer",0);
+        String cashID=pref.getString("ID","");
+        if(!cashID.equals(""))
+        {
 
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
         login_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +48,15 @@ public class LoginActivity extends Activity {
                 }else {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("cashID",OK);
-                    MainActivity.session=_id;
+                    SharedPreferences pref = getSharedPreferences("PreFer", 0);
+                    //pref에 불려진 자료를 수정할 수 있게 불러옴
+
+                    SharedPreferences.Editor editor = pref.edit();
+                    //값 수정
+                    editor.putString("ID", _id);
+                    //저장
+                    editor.commit();
+                    MainActivity.session=pref.getString("ID","");
                     startActivity(intent);
                 }
             }
@@ -53,9 +69,4 @@ public class LoginActivity extends Activity {
             }
         });
     }
-
-
-
 }
-
-

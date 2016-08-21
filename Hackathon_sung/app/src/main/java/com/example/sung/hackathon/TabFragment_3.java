@@ -22,8 +22,8 @@ import java.util.ArrayList;
 
 public class TabFragment_3 extends Fragment {
 
-    List_Recipe_Adapter adapter;
-    final ArrayList<Item_Recipe> datalist = new ArrayList<>();
+    static List_Recipe_Adapter adapter;
+    static final ArrayList<Item_Recipe> datalist = new ArrayList<>();
     private static final int RESULT_OK = -1;
     private static final int RESULT_CANCELED = 0;
     int index;
@@ -31,6 +31,8 @@ public class TabFragment_3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab_fragment_recipe, container, false);
+
+
 
         Item_Recipe recipe;
         recipe = new Item_Recipe("육해공 백짬뽕","일본식 잔폰은 중국인이 많이 살던 나가사키 지방에서 발전한 요리로 바로 이것이 백짬뽕의 기원이다.","요리요리",new String[]{"김치","고추장","파","고기"},R.drawable.recipe1);
@@ -51,10 +53,13 @@ public class TabFragment_3 extends Fragment {
         listview = (ListView) rootView.findViewById(R.id.recipe_listview);
         listview.setAdapter(adapter);
 
+
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, final int position, long id) {
-            //
+                //
+
 
             }
         });

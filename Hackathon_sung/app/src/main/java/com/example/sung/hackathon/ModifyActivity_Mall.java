@@ -1,49 +1,12 @@
 package com.example.sung.hackathon;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import com.example.sung.hackathon.mall.Croll;
-import com.example.sung.hackathon.mall.Mall;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 /**
  * Created by 희연 on 2016-08-18.
  */
 public class ModifyActivity_Mall extends Activity {
-
-
-    static final int NMALL = 4;
-
-
-
-    Button bt[] = new Button[NMALL];
-    static Mall mall[] = new Mall[NMALL] ;//= new Mall[NMALL];
-    //private static Croll croll;
-
-
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,12 +83,7 @@ public class ModifyActivity_Mall extends Activity {
             }
         };
 
-
-
-
-        return my_listener;
     }
-
 }
 class ProcessCrollingTask extends AsyncTask<Void, Void, Void> {
     private static final int ServerPort = 9010;

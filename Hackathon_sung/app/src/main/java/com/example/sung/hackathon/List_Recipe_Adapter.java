@@ -4,7 +4,6 @@ package com.example.sung.hackathon;
  * Created by Sung on 2016-06-01.
  */
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,7 +83,5 @@ public class List_Recipe_Adapter extends ArrayAdapter implements View.OnClickLis
             this.listBtnClickListener.onListBtnClick((int)v.getTag()) ;
         }
     }
-
-
 
 }
