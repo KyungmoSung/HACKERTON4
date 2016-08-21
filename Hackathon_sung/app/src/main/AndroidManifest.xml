@@ -33,7 +33,10 @@
         <activity
             android:name=".ModifyActivity_Mall"></activity>
         <activity
-            android:name=".recipe_add"></activity>
+            android:name=".recipe_add"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name=".recipe_detail"></activity>
 
 
         <receiver android:name=".MyService"></receiver>

@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="#ffffff"
     android:weightSum="1">
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="520dp"
+        android:layout_height="fill_parent"
         android:id="@+id/recipe_listview"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.40" />
+        android:layout_weight="0.9" />
 
-    <ImageButton
-        android:layout_width="1826dp"
-        android:layout_height="238dp"
-        android:id="@+id/recipe_bt"
-        android:background="@color/colorPrimary"
-        android:maxHeight="15dp"
-        android:src="@drawable/add"
-        android:onClick="onClicked" />
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_weight="0.1">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recipe_bt"
+            android:background="@color/colorPrimary"
+            android:maxHeight="15dp"
+            android:src="@drawable/add_white"
+            android:onClick="onClicked" />
+    </LinearLayout>
 
 </LinearLayout>
