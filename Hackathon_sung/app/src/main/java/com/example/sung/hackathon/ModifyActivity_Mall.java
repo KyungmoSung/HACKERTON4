@@ -1,12 +1,33 @@
 package com.example.sung.hackathon;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.example.sung.hackathon.mall.Mall;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
 
 /**
  * Created by 희연 on 2016-08-18.
  */
 public class ModifyActivity_Mall extends Activity {
+
+    static Mall[] mall = new Mall[4];
+    Button[] bt = new Button[4];
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,18 +68,18 @@ public class ModifyActivity_Mall extends Activity {
                 addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 addDialog.setContentView(dialogLayout);
                 addDialog.show();
-                Button login = (Button)dialogLayout.findViewById(R.id.login);
-                Button cancel = (Button)dialogLayout.findViewById(R.id.cancel);
+                Button login = (Button) dialogLayout.findViewById(R.id.login);
+                Button cancel = (Button) dialogLayout.findViewById(R.id.cancel);
                 login.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
                         //Log.d("park", "onClick:"+v.getId());
                         //Log.d("park", "onClick:"+R.id.button1);
-                        switch(v.getId()){
+                        switch (v.getId()) {
                             case R.id.button1:
-                                mall[0].setId(((EditText)dialogLayout.findViewById(R.id.input_id)).getText().toString());
-                                mall[0].setPw(((EditText)dialogLayout.findViewById(R.id.input_pw)).getText().toString());
+                                mall[0].setId(((EditText) dialogLayout.findViewById(R.id.input_id)).getText().toString());
+                                mall[0].setPw(((EditText) dialogLayout.findViewById(R.id.input_pw)).getText().toString());
                                 break;
                             case R.id.button2:
                                 break;
@@ -68,7 +89,7 @@ public class ModifyActivity_Mall extends Activity {
                                 break;
                         }
 
-                        new ProcessCrollingTask().execute(null,null,null);
+                        new ProcessCrollingTask().execute(null, null, null);
 
 
                         addDialog.cancel();
@@ -83,6 +104,7 @@ public class ModifyActivity_Mall extends Activity {
             }
         };
 
+        return my_listener;
     }
 }
 class ProcessCrollingTask extends AsyncTask<Void, Void, Void> {
