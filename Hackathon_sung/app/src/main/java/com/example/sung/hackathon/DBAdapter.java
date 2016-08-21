@@ -35,8 +35,8 @@ public class DBAdapter {
 
     ///////////////////////////////////////////////////////////////////
     static final String DROP = "drop table ";
-    private SQLiteDatabase db;
-    private OpenHelper dbHelper;
+    static private SQLiteDatabase db;
+    static private OpenHelper dbHelper;
 
     public DBAdapter(Context ctx) {
         context = ctx;
@@ -112,8 +112,12 @@ public class DBAdapter {
         long l = db.insert("member", null, values);
         return l; //실패시 -1반환
     }
+<<<<<<< HEAD
 
     public long addRefrigerator(String id, String m_name, int number, String life, int icon) {
+=======
+    static public long addRefrigerator(String id,String m_name,int number,String life,int icon) {
+>>>>>>> 877e1637a8c52f0a2cbf2dcc945ada5bc15096d8
         ContentValues values = new ContentValues();
         values.put("id", id);
         values.put("m_name", m_name);

@@ -3,6 +3,7 @@ package com.example.sung.hackathon;
 /**
  * Created by Sung on 2016-06-01.
  */
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -33,17 +34,17 @@ public class TabFragment_3 extends Fragment {
         View rootView = inflater.inflate(R.layout.tab_fragment_recipe, container, false);
 
         Item_Recipe recipe;
-        recipe = new Item_Recipe("육해공 백짬뽕","일본식 잔폰은 중국인이 많이 살던 나가사키 지방에서 발전한 요리로 바로 이것이 백짬뽕의 기원이다.","요리요리",new String[]{"김치","고추장","파","고기"},R.drawable.recipe1);
+        recipe = new Item_Recipe("육해공 백짬뽕", "일본식 잔폰은 중국인이 많이 살던 나가사키 지방에서 발전한 요리로 바로 이것이 백짬뽕의 기원이다.", "요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리", new String[]{"김치", "고추장", "파", "고기"}, R.drawable.recipe1);
         datalist.add(recipe);
-        recipe = new Item_Recipe("소시지채소볶음","소시지와 채소를 케찹에 볶아 먹던 “쏘야”는 가끔씩 생각나는 추억 속의 단골 술안주이다.","요리요리",new String[]{"김치","고추장","파","고기"},R.drawable.recipe2);
+        recipe = new Item_Recipe("소시지채소볶음", "소시지와 채소를 케찹에 볶아 먹던 “쏘야”는 가끔씩 생각나는 추억 속의 단골 술안주이다.", "요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리", new String[]{"김치", "고추장", "파", "고기"}, R.drawable.recipe2);
         datalist.add(recipe);
-        recipe = new Item_Recipe("연어만능장 주먹밥","부드러운 맛, 매콤한 맛, 담백한 맛… 알래스카연어 하나로 다양한 맛의 쌈장을 만들어 동그란 밥 위에 올린다. ","요리요리",new String[]{"김치","고추장","파","고기"},R.drawable.recipe3);
+        recipe = new Item_Recipe("연어만능장 주먹밥", "부드러운 맛, 매콤한 맛, 담백한 맛… 알래스카연어 하나로 다양한 맛의 쌈장을 만들어 동그란 밥 위에 올린다. ", "요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리", new String[]{"김치", "고추장", "파", "고기"}, R.drawable.recipe3);
         datalist.add(recipe);
-        recipe = new Item_Recipe("육해공 백짬뽕","일본식 잔폰은 중국인이 많이 살던 나가사키 지방에서 발전한 요리로 바로 이것이 백짬뽕의 기원이다.","요리요리",new String[]{"김치","고추장","파","고기"},R.drawable.recipe1);
+        recipe = new Item_Recipe("육해공 백짬뽕", "일본식 잔폰은 중국인이 많이 살던 나가사키 지방에서 발전한 요리로 바로 이것이 백짬뽕의 기원이다.", "요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리요리", new String[]{"김치", "고추장", "파", "고기"}, R.drawable.recipe1);
         datalist.add(recipe);
-        recipe = new Item_Recipe("소시지채소볶음","소시지와 채소를 케찹에 볶아 먹던 “쏘야”는 가끔씩 생각나는 추억 속의 단골 술안주이다.","요리요리",new String[]{"김치","고추장","파","고기"},R.drawable.recipe2);
+        recipe = new Item_Recipe("소시지채소볶음", "소시지와 채소를 케찹에 볶아 먹던 “쏘야”는 가끔씩 생각나는 추억 속의 단골 술안주이다.", "요리요리", new String[]{"김치", "고추장", "파", "고기"}, R.drawable.recipe2);
         datalist.add(recipe);
-        recipe = new Item_Recipe("연어만능장 주먹밥","부드러운 맛, 매콤한 맛, 담백한 맛… 알래스카연어 하나로 다양한 맛의 쌈장을 만들어 동그란 밥 위에 올린다. ","요리요리",new String[]{"김치","고추장","파","고기"},R.drawable.recipe3);
+        recipe = new Item_Recipe("연어만능장 주먹밥", "부드러운 맛, 매콤한 맛, 담백한 맛… 알래스카연어 하나로 다양한 맛의 쌈장을 만들어 동그란 밥 위에 올린다. ", "요리요리", new String[]{"김치", "고추장", "파", "고기"}, R.drawable.recipe3);
         datalist.add(recipe);
 
         ListView listview;
@@ -54,18 +55,29 @@ public class TabFragment_3 extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, final int position, long id) {
+<<<<<<< HEAD
                 //
                 Intent intent =  new Intent(getActivity(),recipe_detail.class);
                 startActivity(intent);
+=======
+
+                Intent in = new Intent(getActivity(), recipe_detail.class); //새로운 액티비티 띄움
+                in.putExtra("title", datalist.get(position).getTitle().toString()); //값을 넘겨줌
+                in.putExtra("sub_title", datalist.get(position).getSub_title().toString());
+                in.putExtra("contents", datalist.get(position).getContents().toString());
+                in.putExtra("img", Integer.toString(datalist.get(position).getImg()));
+                startActivity(in);
+
+>>>>>>> 877e1637a8c52f0a2cbf2dcc945ada5bc15096d8
 
             }
         });
-        ImageButton add_bt = (ImageButton)rootView.findViewById(R.id.recipe_bt);
+        ImageButton add_bt = (ImageButton) rootView.findViewById(R.id.recipe_bt);
         add_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),recipe_add.class);
-                startActivity(intent);
+                Intent intent = new Intent(getActivity(), recipe_add.class);
+                startActivityForResult(intent, 1);
 
             }
         });
@@ -73,7 +85,18 @@ public class TabFragment_3 extends Fragment {
 
     }
 
+    @Override
+      public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) { //레시피 추가
+            if (resultCode == RESULT_OK) {
+                Item_Recipe recipe;
+                recipe = new Item_Recipe(data.getExtras().getString("Title"), data.getExtras().getString("SubTitle"), data.getExtras().getString("Contents"), data.getExtras().getStringArray("Food"), R.drawable.recipe1);
+                datalist.add(recipe);
+                adapter.notifyDataSetChanged();
+            }
+        }
 
+    }
 
 
 }

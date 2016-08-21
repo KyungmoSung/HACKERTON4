@@ -33,7 +33,11 @@ public class LoginActivity extends Activity {
         {
 
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+<<<<<<< HEAD
             //startActivity(intent);
+=======
+            startActivity(intent);
+>>>>>>> 877e1637a8c52f0a2cbf2dcc945ada5bc15096d8
         }
         login_bt.setOnClickListener(new View.OnClickListener() {
             @Override
