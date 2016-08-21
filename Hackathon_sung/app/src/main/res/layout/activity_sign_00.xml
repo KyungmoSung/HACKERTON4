@@ -135,7 +135,7 @@
         android:layout_height="60dp"
         android:layout_below="@+id/linearLayout3"
         android:layout_alignParentStart="true"
-        android:id="@+id/dynamicLayout">
+        android:id="@+id/linearLayoutf">
         <TextView
             android:padding="15dp"
             android:layout_width="140dp"
@@ -160,7 +160,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@+id/dynamicLayout"
+        android:layout_below="@+id/linearLayoutf"
         android:layout_alignParentStart="true"
         android:id="@+id/linearLayout4">
         <TextView

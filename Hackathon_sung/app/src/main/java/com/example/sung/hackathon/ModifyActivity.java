@@ -15,9 +15,9 @@ import android.widget.Spinner;
  */
 public class ModifyActivity extends Activity {
 
-    List_Icon_Adapter adapter;
     String icon;
     ImageView icon_view;
+
     public void onCreate(Bundle savedInstanceState) {
         final Intent intent = getIntent(); //intent 불러옴
         final EditText edit_name;
@@ -39,9 +39,8 @@ public class ModifyActivity extends Activity {
         String cnt = intent.getStringExtra("cnt");
 
 
-
         Spinner s = (Spinner) findViewById(R.id.edit_cnt);
-        s.setSelection(Integer.parseInt(cnt)-1);
+        s.setSelection(Integer.parseInt(cnt) - 1);
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,

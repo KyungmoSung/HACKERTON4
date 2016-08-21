@@ -50,18 +50,18 @@ public class SignActivity extends Activity {
             }
         });
         sign_ok.setOnClickListener(new View.OnClickListener() {
-                    @Override
+            @Override
 
 
 
-                    public void onClick(View v) {
-                        String id,password,name,phone,address,password2;
-                        id=_id.getText().toString();
-                        password=_password.getText().toString();
-                        name=_name.getText().toString();
-                        phone=_phone.getText().toString();
-                        address=_address.getText().toString();
-                        password2=_password2.getText().toString();
+            public void onClick(View v) {
+                String id,password,name,phone,address,password2;
+                id=_id.getText().toString();
+                password=_password.getText().toString();
+                name=_name.getText().toString();
+                phone=_phone.getText().toString();
+                address=_address.getText().toString();
+                password2=_password2.getText().toString();
 
 
                 if(!password.equals(password2) || password.length()<6)

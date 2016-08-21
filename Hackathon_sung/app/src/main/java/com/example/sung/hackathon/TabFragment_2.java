@@ -97,6 +97,7 @@ public class TabFragment_2 extends Fragment {
                                 Intent in = new Intent(getActivity(), ModifyActivity.class); //새로운 액티비티 띄움
                                 in.putExtra("name", datalist.get(position).getName().toString()); //값을 넘겨줌
                                 in.putExtra("exp", datalist.get(position).getExpiration().toString());
+                                in.putExtra("cnt", Integer.toString(datalist.get(position).getCnt()));
                                 in.putExtra("icon", Integer.toString(datalist.get(position).getIcon()));
                                 index = position; //선택된 index값 저장
                                 startActivityForResult(in, 2);
