@@ -42,6 +42,7 @@ public class Main_HtmlUnit {
         while(true) {
             try {
                 ss = new ServerSocket(9010);
+                System.out.println("waiting");
                 socket = ss.accept();
 
 
