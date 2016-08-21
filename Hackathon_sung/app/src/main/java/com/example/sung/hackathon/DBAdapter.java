@@ -30,7 +30,7 @@ public class DBAdapter {
     static final String CREATE2 = "create table if not exists r_contents (r_num references recipe(r_num),contents text,image text,sequence integer);"; //재료 테이블
     static final String CREATE6 = "create table if not exists r_material (r_num references recipe(r_num) ,m_name text );"; //레시피의 해시태그 테이블
     static final String CREATE5 = "create table if not exists r_hash (r_num references recipe(r_num) ,hash text primary key);"; //레시피의재료 테이블
-    static final String CREATE4 = "create table if not exists recipe (r_num integer primary key autoincrement,id text references member(id) not null);"; ///레시피 테이블
+    static final String CREATE4 = "create table if not exists recipe (r_num integer primary key autoincrement,id text references member(id) not null,title text, food text, food2 text , content text);"; ///레시피 테이블
     static final String CREATE7 = "create table if not exists freezer (id text REFERENCES member (id) not null, m_name text primary key not null,number integer,life date,icon integer);";
 
     ///////////////////////////////////////////////////////////////////
@@ -156,6 +156,19 @@ public class DBAdapter {
         values.put("life",life);
         values.put("icon",icon);
         db.update("freezer", values, "id='" + id + "'AND m_name = '"+m_name+"'", null);
+    }
+
+    public long recipe(String title,String _food,String _food2,String _content){ //레시피 추가
+        ContentValues values = new ContentValues();
+        values.put("_recipetitle",title);
+        values.put("_food",_food);
+        values.put("_food2",_food2);
+        values.put("_content",_content);
+        String id;
+
+        String  str="insert into recipe(id,title,food,food2,content) values('"+MainActivity.session+"','"+title+"','"+_food+"','"+_food2+"','"+_content+"');";
+        db.execSQL(str);
+        return 1;
     }
 
     public String login(String _id,String _password) //로그인 성공시 id반환 실패시 false 반환
