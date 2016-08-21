@@ -3,18 +3,22 @@ package com.example.sung.hackathon;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.sung.hackathon.mall.Croll;
 import com.example.sung.hackathon.mall.Mall;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -32,11 +36,7 @@ public class ModifyActivity_Mall extends Activity {
 
 
     static final int NMALL = 4;
-    private static final int ServerPort = 9010;
-    private static final String ServerIP = "pmw.iptime.org";
-    private static Socket socket;
-    private static BufferedReader networkReader;
-    private static BufferedWriter networkWriter;
+
 
 
     Button bt[] = new Button[NMALL];
@@ -60,14 +60,19 @@ public class ModifyActivity_Mall extends Activity {
             }
             else{
 
+                try {
+                    bt[0].setOnClickListener(listener(bt[0]));
+                }
+                catch (Exception e){
+                    Log.d("park",e.toString());
+                }
 
-                bt[0].setOnClickListener(listener(bt[0]));
             }
 
         }
 
     }
-    private static View.OnClickListener listener(View v){
+    private static View.OnClickListener listener(View v) throws IOException {
 
         View.OnClickListener my_listener = new View.OnClickListener() {
             @Override
@@ -84,10 +89,15 @@ public class ModifyActivity_Mall extends Activity {
                 login.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        //Log.d("park", "onClick:"+v.getId());
+                        //Log.d("park", "onClick:"+R.id.button1);
                         switch(v.getId()){
                             case R.id.button1:
                                 mall[0].setId(((EditText)dialogLayout.findViewById(R.id.input_id)).getText().toString());
                                 mall[0].setPw(((EditText)dialogLayout.findViewById(R.id.input_pw)).getText().toString());
+                                Log.d("park", "onClick: ");
+                                Toast.makeText(v.getContext(),"test",Toast.LENGTH_LONG).show();
                                 break;
                             case R.id.button2:
                                 break;
@@ -97,15 +107,8 @@ public class ModifyActivity_Mall extends Activity {
                                 break;
                         }
 
-                        try{
-                            socket = new Socket(ServerIP, ServerPort);
-                            networkWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-                            networkReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                            PrintWriter out = new PrintWriter(networkWriter, true);
-                            out.println("test");
-                        }catch(Exception e){
+                        new ProcessCrollingTask().execute(null,null,null);
 
-                        }
 
                         addDialog.cancel();
                     }
@@ -123,5 +126,34 @@ public class ModifyActivity_Mall extends Activity {
 
 
         return my_listener;
+    }
+
+}
+class ProcessCrollingTask extends AsyncTask<Void, Void, Void> {
+    private static final int ServerPort = 9010;
+    private static final String ServerIP = "59.10.201.198";
+    private static Socket socket;
+    private static BufferedReader networkReader;
+    private static BufferedWriter networkWriter;
+    private static BufferedReader in;
+    @Override
+    protected Void doInBackground(Void... params) {
+        try{
+            Log.d("park", "doInBackground: start");
+            socket = new Socket(ServerIP, ServerPort);
+            networkWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+            networkReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(networkWriter, true);
+
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            String str = in.readLine();
+            Log.d("park", "doInBackground: "+str);
+
+            out.println("test");
+        }catch(Exception e){
+            Log.d("park",e.toString());
+            Log.d("park", "socket error");
+        }
+        return null;
     }
 }

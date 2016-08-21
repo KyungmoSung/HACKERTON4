@@ -1,17 +1,10 @@
 import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.CookieManager;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.*;
-import com.gargoylesoftware.htmlunit.util.Cookie;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -24,7 +17,7 @@ public class Main_HtmlUnit {
     public static void main(String arvs[]){
 
         ServerSocket ss = null;
-        Socket socket;
+        Socket client;
         OutputStream out;
         DataOutputStream dos ;
         InputStream in ;
@@ -43,10 +36,10 @@ public class Main_HtmlUnit {
             try {
                 ss = new ServerSocket(9010);
                 System.out.println("waiting");
-                socket = ss.accept();
+                client = ss.accept();
+                System.out.println("accept");
 
-
-                in = socket.getInputStream();
+                in = client.getInputStream();
                 dis = new DataInputStream(in);
 
                 System.out.println(dis.readUTF());
@@ -95,12 +88,12 @@ public class Main_HtmlUnit {
                 bw.write(currPage.toString());
                 bw.close();
 
-                out = socket.getOutputStream();
+                out = client.getOutputStream();
                 dos = new DataOutputStream(out);
                 dos.writeUTF("서버로부터의 메세지입니다.");
 
                 dos.close();
-                socket.close();
+                client.close();
             /*
             cookies = new HashMap<String, String>();
             CookieManager cookieManager = webClient.getCookieManager();
