@@ -18,9 +18,9 @@ public class DBAdapter {
     static final String TABLE6 = "recipe";
     static final String TABLE7 = "freezer";
     // table field name
-    public static final String DBTBL_ID    = "_id";	// long
-    public static final String DBTBL_NAME  = "name";	// text
-    public static final String DBTBL_TEL   = "tel";	// text
+    public static final String DBTBL_ID = "_id";    // long
+    public static final String DBTBL_NAME = "name";    // text
+    public static final String DBTBL_TEL = "tel";    // text
 
     //////////////////////////////////////////////////////////////////
     static final int DB_VERSION = 1;
@@ -41,8 +41,6 @@ public class DBAdapter {
     public DBAdapter(Context ctx) {
         context = ctx;
     }
-
-
 
 
     private static class OpenHelper extends SQLiteOpenHelper {
@@ -88,88 +86,95 @@ public class DBAdapter {
     public void close() {
         dbHelper.close();
     }
+
     public Cursor fetchAllData() {
         return db.query(TABLE, null, null, null, null, null, null);
     }
+
     //
     public Cursor fetchAllRefrigerator(String cashID) {
-        String query="select * from refrigerator where id="+cashID+";";
-        return db.rawQuery("select * from refrigerator where id='"+cashID+"'",null);
+        String query = "select * from refrigerator where id=" + cashID + ";";
+        return db.rawQuery("select * from refrigerator where id='" + cashID + "'", null);
     }
+
     public Cursor fetchAllfreezer(String cashID) {
-        String query="select * from freezer where id="+cashID+";";
-        return db.rawQuery("select * from freezer where id='"+cashID+"'",null);
+        String query = "select * from freezer where id=" + cashID + ";";
+        return db.rawQuery("select * from freezer where id='" + cashID + "'", null);
     }
-    public long addMember(String id,String password,String name,String phone,String address) {
+
+    public long addMember(String id, String password, String name, String phone, String address) {
         ContentValues values = new ContentValues();
         values.put("id", id);
-        values.put("password",password);
+        values.put("password", password);
         values.put("name", name);
         values.put("phone", phone);
         values.put("address", address);
         long l = db.insert("member", null, values);
         return l; //실패시 -1반환
     }
-    public long addRefrigerator(String id,String m_name,int number,String life,int icon) {
+
+    public long addRefrigerator(String id, String m_name, int number, String life, int icon) {
         ContentValues values = new ContentValues();
         values.put("id", id);
-        values.put("m_name",m_name);
+        values.put("m_name", m_name);
         values.put("number", number);
         values.put("life", life);
-        values.put("icon",icon);
+        values.put("icon", icon);
         long l = db.insert("refrigerator", null, values);
         return l;
     }
 
-    public void delRefrigerator(String id,String m_name) { //재료삭제
-        String  str="delete from refrigerator where id='"+id+"'AND m_name ='"+m_name+"';";
+    public void delRefrigerator(String id, String m_name) { //재료삭제
+        String str = "delete from refrigerator where id='" + id + "'AND m_name ='" + m_name + "';";
         db.execSQL(str);
     }
-    public void modifyRefrigerator(String id,String m_name,String new_name,int number,String life,int icon) {
+
+    public void modifyRefrigerator(String id, String m_name, String new_name, int number, String life, int icon) {
         ContentValues values = new ContentValues();
         values.put("id", id);
-        values.put("m_name",new_name);
-        values.put("number",number);
-        values.put("life",life);
-        values.put("icon",icon);
-        db.update("refrigerator", values, "id='" + id + "'AND m_name = '"+m_name+"'", null);
-    }
-    public long addfreezer(String id,String m_name,int number,String life,int icon) {
-        ContentValues values = new ContentValues();
-        values.put("id", id);
-        values.put("m_name",m_name);
+        values.put("m_name", new_name);
         values.put("number", number);
         values.put("life", life);
-        values.put("icon",icon);
+        values.put("icon", icon);
+        db.update("refrigerator", values, "id='" + id + "'AND m_name = '" + m_name + "'", null);
+    }
+
+    public long addfreezer(String id, String m_name, int number, String life, int icon) {
+        ContentValues values = new ContentValues();
+        values.put("id", id);
+        values.put("m_name", m_name);
+        values.put("number", number);
+        values.put("life", life);
+        values.put("icon", icon);
         long l = db.insert("freezer", null, values);
         return l;
     }
-    public void defreezer(String id,String m_name) { //재료삭제
-        String  str="delete from freezer where id='"+id+"'AND m_name ='"+m_name+"';";
+
+    public void defreezer(String id, String m_name) { //재료삭제
+        String str = "delete from freezer where id='" + id + "'AND m_name ='" + m_name + "';";
         db.execSQL(str);
     }
-    public void modifyfreezer(String id,String m_name,String new_name,int number,String life,int icon) {
+
+    public void modifyfreezer(String id, String m_name, String new_name, int number, String life, int icon) {
         ContentValues values = new ContentValues();
         values.put("id", id);
-        values.put("m_name",new_name);
-        values.put("number",number);
-        values.put("life",life);
-        values.put("icon",icon);
-        db.update("freezer", values, "id='" + id + "'AND m_name = '"+m_name+"'", null);
+        values.put("m_name", new_name);
+        values.put("number", number);
+        values.put("life", life);
+        values.put("icon", icon);
+        db.update("freezer", values, "id='" + id + "'AND m_name = '" + m_name + "'", null);
     }
 
-    public String login(String _id,String _password) //로그인 성공시 id반환 실패시 false 반환
+    public String login(String _id, String _password) //로그인 성공시 id반환 실패시 false 반환
     {
-        String id,password;
-        Cursor cursor = db.rawQuery("select * from member ",null);
-        int count =cursor.getCount();
+        String id, password;
+        Cursor cursor = db.rawQuery("select * from member ", null);
+        int count = cursor.getCount();
         cursor.moveToFirst();
-        for(int i=0;i<count;i++)
-        {
-            id=cursor.getString(cursor.getColumnIndex("id"));
-            password=cursor.getString(cursor.getColumnIndex("password"));
-            if(_id.equals(id) && _password.equals(password))
-            {
+        for (int i = 0; i < count; i++) {
+            id = cursor.getString(cursor.getColumnIndex("id"));
+            password = cursor.getString(cursor.getColumnIndex("password"));
+            if (_id.equals(id) && _password.equals(password)) {
                 return _id;
             }
             cursor.moveToNext();
@@ -178,18 +183,47 @@ public class DBAdapter {
         return "false";
     }
 
+    public boolean password_iden(String _password) //회원정보 수정시 비밀번호 확인
+    {
+        String password;
+        Cursor cursor = db.rawQuery("select password from member where id ='" + MainActivity.session + "'", null);
+        int count = cursor.getCount();
+        cursor.moveToFirst();
+        for (int i = 0; i < count; i++) {
+            password = cursor.getString(cursor.getColumnIndex("password"));
+            if (_password.equals(password)) {
+                return true;
+            }
+            cursor.moveToNext();
+        }
+
+        return false;
+    }
+
+    public User change_iden(String id, String name, String phone, String address) //회원정보 수정시 정보 제공
+    {
+        Cursor cursor = db.rawQuery("select id,name,phone,address from member where id ='" + MainActivity.session + "';", null);
+        cursor.moveToFirst();
+        return new User(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+
+    }
+    public void Update(String password , String name, String phone, String address){ //회원정보 수정시 정보 제공{
+        String str = "UPDATE member SET password='" + password + "',name ='" + name + "',phone='"+phone+"',address='"+address+"';";
+        db.execSQL(str);
+    }
+
+
+
     public int idcheck(String _id) //로그인 성공시 id반환 실패시 false 반환
     {
         String id;
-        Cursor cursor = db.rawQuery("select * from member ",null);
-        int count =cursor.getCount();
+        Cursor cursor = db.rawQuery("select * from member ", null);
+        int count = cursor.getCount();
         cursor.moveToFirst();
-        for(int i=0;i<count;i++)
-        {
-            id=cursor.getString(cursor.getColumnIndex("id"));
+        for (int i = 0; i < count; i++) {
+            id = cursor.getString(cursor.getColumnIndex("id"));
 
-            if(_id.equals(id))
-            {
+            if (_id.equals(id)) {
                 return 0;
             }
             cursor.moveToNext();
@@ -216,7 +250,7 @@ public class DBAdapter {
 
     public void delData(String id) {
 
-        String str="delete from Member where id='"+id+"';";
+        String str = "delete from Member where id='" + id + "';";
         db.execSQL(str);
     }
 

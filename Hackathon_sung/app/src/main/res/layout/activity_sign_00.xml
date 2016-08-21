@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="회원가입"
+            android:text="회원 수정"
             android:id="@+id/textView4"
             android:textStyle="bold"
             android:textAlignment="center"
@@ -60,16 +60,8 @@
             android:textSize="18dp"
             android:id="@+id/id"
             android:hint="영문,숫자"
-            />
-        <Button
-            android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="중복확인"
-            android:textColor="#000000"
-            android:background="#FFFFFF"
-
-            android:id="@+id/idcheckbtn" />
+            android:accessibilityLiveRegion="none"
+            android:enabled="false" />
 
 
     </LinearLayout>
@@ -208,17 +200,30 @@
 
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:text="수정"
+        android:textColor="#000000"
+        android:background="#FFFFFF"
+        android:id="@+id/user_modi"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/iden"
+        android:layout_alignStart="@+id/textView6"
+        android:layout_marginLeft="20dp" />
+
     <Button
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:text="탈퇴"
         android:textColor="#000000"
         android:background="#FFFFFF"
-        android:id="@+id/userout"
-        android:layout_marginTop="70dp"
+        android:id="@+id/iden"
         android:textSize="20dp"
-        android:layout_below="@+id/linearLayout5"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="30dp" />
 
     <TextView
         android:layout_marginLeft="10dp"

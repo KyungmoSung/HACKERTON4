@@ -54,7 +54,9 @@ public class TabFragment_3 extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, final int position, long id) {
-            //
+                //
+                Intent intent =  new Intent(getActivity(),recipe_detail.class);
+                startActivity(intent);
 
             }
         });
