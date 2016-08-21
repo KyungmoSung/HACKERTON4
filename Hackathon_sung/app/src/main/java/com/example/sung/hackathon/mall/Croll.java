@@ -1,15 +1,7 @@
 package com.example.sung.hackathon.mall;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
-import com.gargoylesoftware.htmlunit.html.HtmlButton;
-import com.gargoylesoftware.htmlunit.html.HtmlForm;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
-import com.gargoylesoftware.htmlunit.html.HtmlTable;
-import com.gargoylesoftware.htmlunit.html.HtmlTableRow;
-import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
+
+
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -22,8 +14,8 @@ public class Croll extends Mall{
     public static Map<String, String> cookies;
     private String id = "mw9027";
     private String pw = "jy2411";
-    WebClient webClient;
-    HtmlPage currPage;
+    //WebClient webClient;
+    //HtmlPage currPage;
     boolean login_success;
     String LoginPage = "http://member.ssg.com/member/popup/popupLogin.ssg";
     String OrderPage = "http://pay.ssg.com/myssg/orderList.ssg?gnb=orderlist";
@@ -32,15 +24,15 @@ public class Croll extends Mall{
 
 
     }
-
+/*
     public ArrayList<String> getData(){
 
         ArrayList<String> food = new ArrayList<String>();
 
         try {
 
-            if(!login_success)
-                Login();
+            //if(!login_success)
+            //    Login();
 
             currPage = webClient.getPage(OrderPage);
             HtmlTable table = (HtmlTable) currPage.getElementById("table_order_list");
@@ -63,6 +55,7 @@ public class Croll extends Mall{
         }
         return food;
     }
+    /*
     public boolean Login(){
 
         try{
@@ -87,5 +80,5 @@ public class Croll extends Mall{
         }
         return login_success;
     }
-
+*/
 }

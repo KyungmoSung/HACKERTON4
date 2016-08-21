@@ -13,6 +13,13 @@ import android.widget.EditText;
 import com.example.sung.hackathon.mall.Croll;
 import com.example.sung.hackathon.mall.Mall;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,9 +32,16 @@ public class ModifyActivity_Mall extends Activity {
 
 
     static final int NMALL = 4;
+    private static final int ServerPort = 9010;
+    private static final String ServerIP = "pmw.iptime.org";
+    private static Socket socket;
+    private static BufferedReader networkReader;
+    private static BufferedWriter networkWriter;
+
+
     Button bt[] = new Button[NMALL];
     static Mall mall[] = new Mall[NMALL] ;//= new Mall[NMALL];
-    private static Croll croll;
+    //private static Croll croll;
 
 
 
@@ -82,8 +96,16 @@ public class ModifyActivity_Mall extends Activity {
                             case R.id.button4:
                                 break;
                         }
-                        croll = new Croll();
-                        croll.Login();
+
+                        try{
+                            socket = new Socket(ServerIP, ServerPort);
+                            networkWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                            networkReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                            PrintWriter out = new PrintWriter(networkWriter, true);
+                            out.println("test");
+                        }catch(Exception e){
+
+                        }
 
                         addDialog.cancel();
                     }
