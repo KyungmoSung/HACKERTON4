@@ -55,11 +55,6 @@ public class TabFragment_3 extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, final int position, long id) {
-<<<<<<< HEAD
-                //
-                Intent intent =  new Intent(getActivity(),recipe_detail.class);
-                startActivity(intent);
-=======
 
                 Intent in = new Intent(getActivity(), recipe_detail.class); //새로운 액티비티 띄움
                 in.putExtra("title", datalist.get(position).getTitle().toString()); //값을 넘겨줌
@@ -68,7 +63,6 @@ public class TabFragment_3 extends Fragment {
                 in.putExtra("img", Integer.toString(datalist.get(position).getImg()));
                 startActivity(in);
 
->>>>>>> 877e1637a8c52f0a2cbf2dcc945ada5bc15096d8
 
             }
         });

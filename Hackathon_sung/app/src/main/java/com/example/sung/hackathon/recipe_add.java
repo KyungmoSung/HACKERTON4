@@ -2,29 +2,21 @@ package com.example.sung.hackathon;
 
 import android.app.Activity;
 import android.content.Intent;
-<<<<<<< HEAD
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-=======
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
-import android.widget.Button;
+
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
->>>>>>> 877e1637a8c52f0a2cbf2dcc945ada5bc15096d8
+
 
 /**
  * Created by user1 on 2016-08-19.

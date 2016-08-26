@@ -2,14 +2,19 @@ package com.example.sung.hackathon;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.sung.hackathon.mall.Mall;
 
@@ -27,7 +32,9 @@ import java.net.Socket;
 public class ModifyActivity_Mall extends Activity {
 
     static Mall[] mall = new Mall[4];
-    Button[] bt = new Button[4];
+    static Button[] bt = new Button[4];
+    static public ProgressBar pbar;
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +46,7 @@ public class ModifyActivity_Mall extends Activity {
         bt[0] = (Button)findViewById(R.id.button1);
         for(Mall i : mall){
             if(i.isSync()) {
-                bt[0].setText("동기중");
+                bt[0].setText("연동중");
 
             }
             else{
@@ -89,7 +96,7 @@ public class ModifyActivity_Mall extends Activity {
                                 break;
                         }
 
-                        new ProcessCrollingTask().execute(null, null, null);
+                        new ProcessCrollingTask(v.getContext()).execute(null, null, null);
 
 
                         addDialog.cancel();
@@ -114,6 +121,14 @@ class ProcessCrollingTask extends AsyncTask<Void, Void, Void> {
     private static BufferedReader networkReader;
     private static BufferedWriter networkWriter;
     private static BufferedReader in;
+    ProgressDialog mDlg;
+    Context mContext;
+
+
+    ProcessCrollingTask(Context mContext){
+        this.mContext = mContext;
+
+    }
 
     @Override
     protected void onProgressUpdate(Void... values) {
@@ -122,10 +137,33 @@ class ProcessCrollingTask extends AsyncTask<Void, Void, Void> {
 
     }
 
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        mDlg = new ProgressDialog(mContext);
+        mDlg.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mDlg.setMessage("불러오는 중...");
+        mDlg.show();
+
+        Toast.makeText(mContext,"로그인 성공",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+        ModifyActivity_Mall.bt[0].setText("연동중");
+        ModifyActivity_Mall.bt[0].setTextColor(ContextCompat.getColor(mContext,R.color.colorGreen));
+        ModifyActivity_Mall.bt[0].setBackground(ContextCompat.getDrawable(mContext,R.drawable.round_button_green));
+        mDlg.dismiss();
+        Toast.makeText(mContext,"4개의 데이터 추가완료",Toast.LENGTH_LONG).show();
+    }
+
     @Override
     protected Void doInBackground(Void... params) {
         try{
             Log.d("park", "doInBackground: start");
+
             socket = new Socket(ServerIP, ServerPort);
             networkWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             networkReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));

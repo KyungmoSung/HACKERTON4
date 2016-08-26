@@ -2,12 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    >
-=======
     android:orientation="vertical"
     android:weightSum="1.0">
->>>>>>> 877e1637a8c52f0a2cbf2dcc945ada5bc15096d8
 
 
     <LinearLayout

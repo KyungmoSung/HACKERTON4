@@ -33,18 +33,12 @@
         <activity
             android:name=".ModifyActivity_Mall"></activity>
         <activity
-<<<<<<< HEAD
-            android:name=".recipe_add"></activity>
+            android:name=".recipe_add"
+        android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".recipe_detail"></activity>
         <activity
             android:name=".password_identify"></activity>
-=======
-            android:name=".recipe_add"
-            android:windowSoftInputMode="adjustPan"></activity>
-        <activity
-            android:name=".recipe_detail"></activity>
->>>>>>> 877e1637a8c52f0a2cbf2dcc945ada5bc15096d8
 
 
         <receiver android:name=".MyService"></receiver>

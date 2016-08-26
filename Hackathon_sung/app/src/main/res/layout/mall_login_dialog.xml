@@ -16,18 +16,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/imageView3"
-                android:src="@drawable/ic_mall"
-                android:background="#ffffff" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:text="아이디"
+                android:textSize="18dp"/>
 
             <EditText
                 android:id="@+id/input_id"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minWidth="100dp"/>
+                android:layout_weight="4" />
 
         </LinearLayout>
 
@@ -36,18 +36,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/imageView2"
-                android:src="@drawable/ic_direct"
-                android:background="#ffffff" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="비밀번호"
+                android:textSize="18dp"
+                android:layout_weight="6" />
 
             <EditText
                 android:id="@+id/input_pw"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minWidth="100dp"/>
+                android:inputType="textPassword"
+                android:layout_weight="4" />
 
         </LinearLayout>
         <LinearLayout
